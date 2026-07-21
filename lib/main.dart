@@ -39,13 +39,13 @@ class _MyHomePageState extends State<MyHomePage> {
       backgroundColor: const Color.fromARGB(255, 221, 244, 247),
       body: Center(
         child: Container(
-          width: 120,
-          height: 120,
+          width: 300,
+          height: 300,
           color: const Color.fromARGB(255, 110, 181, 214),
           child: Center(
             child: Container(
-              width: 60,
-              height: 60,
+              width: 200,
+              height: 100,
               color: const Color.fromARGB(255, 167, 5, 199),
               child: const Center(),
             ),
