@@ -1,4 +1,6 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
+import 'dart:async';
 
 void main() {
   runApp(const MyApp());
@@ -12,42 +14,79 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Application',
-      home: const MyHomePage(title: '2nd flutter app'),
+      home: const ColorBox(title: '2nd flutter app'),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+class ColorBox extends StatefulWidget {
+  const ColorBox({super.key, required this.title});
 
   final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<ColorBox> createState() => _ColorBoxState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  void changeColor() {
-    //int counter = 0;
-    const Duration(seconds: 1);
-    //counter++;
+class _ColorBoxState extends State<ColorBox> {
+  Color _currentColor = Colors.purple;
+  Timer? _timer;
+  final Random _random = Random();
+
+  @override
+  void initState() {
+    super.initState();
+    _startTimer();
+  }
+
+  void _startTimer() {
+    _timer?.cancel();
+    _timer = Timer.periodic(const Duration(seconds: 3), (timer) {
+      _changeColor();
+    });
+  }
+
+  void _changeColor() {
+    setState(() {
+      _currentColor = Color.fromARGB(
+        255,
+        _random.nextInt(256),
+        _random.nextInt(256),
+        _random.nextInt(256),
+      );
+    });
+  }
+
+  void _handleTap() {
+    _changeColor();
+    _startTimer();
   }
 
   @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 221, 244, 247),
+      backgroundColor: Colors.white,
       body: Center(
         child: Container(
           width: 120,
           height: 120,
-          color: const Color.fromARGB(255, 110, 181, 214),
-          child: Center(
-            child: Container(
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+            color: const Color.fromARGB(255, 183, 227, 247),
+          ),
+
+          child: GestureDetector(
+            onTap: _handleTap,
+            child: AnimatedContainer(
               width: 60,
               height: 60,
-              color: const Color.fromARGB(255, 167, 5, 199),
-              child: const Center(),
+              duration: const Duration(milliseconds: 300),
+              color: _currentColor,
             ),
           ),
         ),
