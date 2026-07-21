@@ -74,7 +74,7 @@ class _ColorBoxState extends State<ColorBox> {
       height: 120,
       alignment: Alignment.center,
       decoration: BoxDecoration(
-        color: const Color.fromARGB(255, 204, 231, 243),
+        color: const Color.fromARGB(255, 175, 218, 236),
       ),
 
       child: GestureDetector(
