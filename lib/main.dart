@@ -69,17 +69,21 @@ class _ColorBoxState extends State<ColorBox> {
   }
 
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: Center(
-        child: GestureDetector(
-          onTap: _handleTap,
-          child: AnimatedContainer(
-            width: 60,
-            height: 60,
-            duration: const Duration(milliseconds: 300),
-            color: _currentColor,
-          ),
+    return Container(
+      width: 120,
+      height: 120,
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        color: const Color.fromARGB(255, 204, 231, 243),
+      ),
+
+      child: GestureDetector(
+        onTap: _handleTap,
+        child: AnimatedContainer(
+          width: 60,
+          height: 60,
+          duration: const Duration(milliseconds: 300),
+          color: _currentColor,
         ),
       ),
     );
