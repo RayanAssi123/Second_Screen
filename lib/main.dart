@@ -72,22 +72,13 @@ class _ColorBoxState extends State<ColorBox> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
-        child: Container(
-          width: 120,
-          height: 120,
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-            color: const Color.fromARGB(255, 183, 227, 247),
-          ),
-
-          child: GestureDetector(
-            onTap: _handleTap,
-            child: AnimatedContainer(
-              width: 60,
-              height: 60,
-              duration: const Duration(milliseconds: 300),
-              color: _currentColor,
-            ),
+        child: GestureDetector(
+          onTap: _handleTap,
+          child: AnimatedContainer(
+            width: 60,
+            height: 60,
+            duration: const Duration(milliseconds: 300),
+            color: _currentColor,
           ),
         ),
       ),
