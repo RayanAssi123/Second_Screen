@@ -63,11 +63,6 @@ class _ColorBoxState extends State<ColorBox> {
   }
 
   @override
-  void dispose() {
-    _timer?.cancel();
-    super.dispose();
-  }
-
   Widget build(BuildContext context) {
     return Container(
       width: 120,
